@@ -14,5 +14,9 @@ public class CharacterMovement : MonoBehaviour
         clamped_pos.x = Mathf.Clamp(clamped_pos.x, -move_range_left, move_range_right);
 
         transform.position = clamped_pos;
+
+        /*
+        TODO: Set a facing direction, reflect fishing character + fishing rod based on facing direction
+        */
     }
 }
