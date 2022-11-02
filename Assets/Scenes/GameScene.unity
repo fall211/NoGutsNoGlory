@@ -172,6 +172,7 @@ MonoBehaviour:
   fishing_rod_end: {fileID: 1629944526}
   bobber: {fileID: 5761492646758235335, guid: c30b633bab3814145a0b901fdb16758e, type: 3}
   cast_distance: 2
+  mid_point: {fileID: 1783763837}
 --- !u!212 &95010894
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -250,10 +251,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152333972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.2345624, y: 2.3787723, z: -0.1801024}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1783763837}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -269,6 +271,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b2b27a441cce44cb46ca8563f8e574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fishing_rod_end: {fileID: 1629944526}
+  bobber: {fileID: 0}
+  mid_point: {fileID: 1783763837}
 --- !u!120 &152333975
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -321,7 +326,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.08176041
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1229,6 +1234,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1783763836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1783763837}
+  m_Layer: 0
+  m_Name: Mid Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1783763837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783763836}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.24, y: -1.48, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 152333973}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1841170067
 GameObject:
   m_ObjectHideFlags: 0
