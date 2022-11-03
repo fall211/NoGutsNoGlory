@@ -3,7 +3,7 @@ using UnityEngine;
 public class FishingLine : MonoBehaviour
 {
     public Transform fishing_rod_end;
-    public GameObject bobber;
+    private GameObject bobber;
     public Transform mid_point;
     private LineRenderer line_renderer;
 
@@ -17,6 +17,9 @@ public class FishingLine : MonoBehaviour
         if (bobber != null) {
             // draw_straight_line();
             draw_quadratic_line();
+        }
+        else {
+            line_renderer.positionCount = 0;
         }
     }
 

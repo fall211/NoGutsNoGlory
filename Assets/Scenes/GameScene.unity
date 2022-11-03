@@ -154,6 +154,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1629944526}
+  - {fileID: 152333973}
   m_Father: {fileID: 1841170069}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 37.895}
@@ -170,9 +171,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishing_rod_end: {fileID: 1629944526}
-  bobber: {fileID: 5761492646758235335, guid: c30b633bab3814145a0b901fdb16758e, type: 3}
-  cast_distance: 2
+  bobber_prefab: {fileID: 5761492646758235335, guid: c30b633bab3814145a0b901fdb16758e, type: 3}
   mid_point: {fileID: 1783763837}
+  cast_distance: 2
 --- !u!212 &95010894
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -234,8 +235,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 152333973}
-  - component: {fileID: 152333975}
   - component: {fileID: 152333974}
+  - component: {fileID: 152333975}
   m_Layer: 0
   m_Name: Fishing Line
   m_TagString: Untagged
@@ -250,14 +251,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152333972}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.32470065, w: 0.9458168}
+  m_LocalPosition: {x: -0.240464, y: 3.1622326, z: 0}
+  m_LocalScale: {x: 0.7306265, y: 1.0472177, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1783763837}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 95010892}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &152333974
 MonoBehaviour:
@@ -272,7 +273,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishing_rod_end: {fileID: 1629944526}
-  bobber: {fileID: 0}
   mid_point: {fileID: 1783763837}
 --- !u!120 &152333975
 LineRenderer:
@@ -993,7 +993,7 @@ GameObject:
   - component: {fileID: 997240660}
   - component: {fileID: 997240659}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

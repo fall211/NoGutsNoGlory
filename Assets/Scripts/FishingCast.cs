@@ -4,35 +4,32 @@ using UnityEngine;
 public class FishingCast : MonoBehaviour
 {
     public Transform fishing_rod_end;
-    public GameObject bobber;
-    public float cast_distance = 3f;
+    public GameObject bobber_prefab;
     public Transform mid_point;
-    private GameObject clone_bobber;    
-    private bool just_clicked = false;
+    private GameObject bobber;    
     private Rigidbody2D bobber_rigidbody;
     private Coroutine lerp;
+
+    private Vector2 mouse_position;
+
+    public float cast_distance = 3f;
+    private bool just_clicked = false;
+    private bool is_cast = false;
 
     /*
     TODO: Only allow the player to cast a line if they are facing the pond and close enough to it.
     */
 
     void Update() {
-        Vector2 mouse_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouse_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0) && !just_clicked) {
-
-            if (clone_bobber != null) {
-                Destroy(clone_bobber);
+            if (!is_cast) {
+                cast();
             }
-
-            clone_bobber = Instantiate(bobber, fishing_rod_end.position, Quaternion.identity);
-            bobber_rigidbody = clone_bobber.GetComponentInParent(typeof(Rigidbody2D)) as Rigidbody2D;
-            
-            apply_vel(bobber_rigidbody);
-
-            lerp = StartCoroutine(lerp_midpoint(mouse_position));
-
-            just_clicked = true;
+            else if (is_cast) {
+                reel();
+            }
         }
         if (Input.GetMouseButtonUp(0)) {
             just_clicked = false;
@@ -43,9 +40,26 @@ public class FishingCast : MonoBehaviour
         }
     }
 
+    void cast() {
+
+        bobber = Instantiate(bobber_prefab, fishing_rod_end.position, Quaternion.identity);
+        bobber_rigidbody = bobber.GetComponentInParent(typeof(Rigidbody2D)) as Rigidbody2D;
+        
+        apply_vel(bobber_rigidbody);
+
+        lerp = StartCoroutine(lerp_midpoint(mouse_position));
+        is_cast = true;
+        just_clicked = true;
+    }
+
+    void reel() {
+        if (bobber != null) {
+            Destroy(bobber);
+        }
+        is_cast = false;
+    }
+
     void apply_vel(Rigidbody2D rigidbody) {
-        //* Mouse position in terms of in-engine units.
-        Vector2 mouse_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //* Gets vector pointing from fishing_rod_end to the mouse position.
         Vector2 vel_direction = mouse_position - new Vector2(fishing_rod_end.position.x,fishing_rod_end.position.y);
 
