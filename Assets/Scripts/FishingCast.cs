@@ -6,13 +6,14 @@ public class FishingCast : MonoBehaviour
     public Transform fishing_rod_end;
     public GameObject bobber_prefab;
     public Transform mid_point;
+
     private GameObject bobber;    
     private Rigidbody2D bobber_rigidbody;
     private Coroutine lerp;
-
     private Vector2 mouse_position;
 
     public float cast_distance = 3f;
+    
     private bool just_clicked = false;
     private bool is_cast = false;
 
@@ -29,6 +30,7 @@ public class FishingCast : MonoBehaviour
             }
             else if (is_cast) {
                 reel();
+                StopCoroutine(lerp);
             }
         }
         if (Input.GetMouseButtonUp(0)) {
