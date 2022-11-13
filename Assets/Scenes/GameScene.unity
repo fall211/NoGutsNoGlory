@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 95010892}
   - component: {fileID: 95010894}
   - component: {fileID: 95010893}
+  - component: {fileID: 95010895}
   m_Layer: 0
   m_Name: Fishing Rod
   m_TagString: Untagged
@@ -226,6 +227,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &95010895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95010891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138db434d20e8443a9ce5fe0933bbb17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &152333972
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,7 +1008,7 @@ GameObject:
   - component: {fileID: 997240662}
   m_Layer: 0
   m_Name: Water
-  m_TagString: Untagged
+  m_TagString: water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

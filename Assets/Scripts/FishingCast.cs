@@ -55,10 +55,13 @@ public class FishingCast : MonoBehaviour
     }
 
     void reel() {
+        Bobber bobber_component = bobber.GetComponent<Bobber>();
         if (bobber != null) {
             Destroy(bobber);
         }
         is_cast = false;
+        bobber_component.fish_can_bite = false;
+
     }
 
     void apply_vel(Rigidbody2D rigidbody) {

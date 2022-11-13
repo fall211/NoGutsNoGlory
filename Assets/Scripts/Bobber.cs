@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bobber : MonoBehaviour
 {
     private Rigidbody2D bobber_rigidbody;
     public bool in_water;
+    public bool fish_can_bite;
     public float buoyancy_force = 1f;
 
     void Start()
