@@ -61,7 +61,9 @@ public class FishingCast : MonoBehaviour
         }
         is_cast = false;
         bobber_component.fish_can_bite = false;
-
+        if (bobber_component.fish_biting) {
+            bobber_component.Caught();
+        }
     }
 
     void apply_vel(Rigidbody2D rigidbody) {
@@ -80,13 +82,17 @@ public class FishingCast : MonoBehaviour
     IEnumerator lerp_midpoint(Vector2 mouse_position) {
         float time_elapsed = 0f;
         float lerp_duration = 2.5f;
+        Vector2 start_pos = fishing_rod_end.position;
+        Vector2 end_pos = mouse_position;
+        // clamp the end position to a rectangle to the right of the start position.
+        end_pos.x = Mathf.Clamp(end_pos.x, start_pos.x, start_pos.x + 4f);
+        end_pos.y = Mathf.Clamp(end_pos.y, start_pos.y - 2f, start_pos.y + 2f);
+
+
         while (time_elapsed < lerp_duration) {
             
-            //TODO: Clamp y coordinate of midpoint to prevent extreme maximums.
-
-            mid_point.position = Vector3.Lerp(fishing_rod_end.position, mouse_position, time_elapsed/lerp_duration);
+            mid_point.position = Vector2.Lerp(start_pos, end_pos, time_elapsed/lerp_duration);
             time_elapsed += Time.deltaTime;
-
             yield return null;
         }
         mid_point.position = mouse_position;

@@ -48,7 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   in_water: 0
+  fish_can_bite: 0
+  fish_biting: 0
   buoyancy_force: 30
+  fish_force: 0
 --- !u!212 &5761492646758235354
 SpriteRenderer:
   m_ObjectHideFlags: 0
