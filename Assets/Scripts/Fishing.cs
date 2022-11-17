@@ -26,7 +26,6 @@ public class Fishing : MonoBehaviour {
             }
         }
         if (!coroutine_running && bobber_obj != null) {
-            Debug.Log("Start coroutine");
             if (bobber_component.fish_can_bite) {
                 wait_for_bite = StartCoroutine(fish_bite());
             }
