@@ -6,21 +6,26 @@ public class FishingCast : MonoBehaviour
     public Transform fishing_rod_end;
     public GameObject bobber_prefab;
     public Transform mid_point;
+    public GameObject player;
 
     private GameObject bobber;    
     private Rigidbody2D bobber_rigidbody;
     private Coroutine lerp;
     private Coroutine reel_cor;
     private Vector2 mouse_position;
+    private CharacterMovement player_movement;
 
     public float cast_distance = 3f;
     
     private bool just_clicked = false;
-    private bool is_cast = false;
+    public bool is_cast = false;
 
     /*
     TODO: Only allow the player to cast a line if they are facing the pond and close enough to it.
     */
+    private void Start() {
+        player_movement = player.GetComponent<CharacterMovement>();
+    }
 
     void Update() {
         mouse_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -45,6 +50,10 @@ public class FishingCast : MonoBehaviour
 
     void cast() {
 
+        if (!player_movement.facing_right) {
+            return;
+        }
+
         bobber = Instantiate(bobber_prefab, fishing_rod_end.position, Quaternion.identity);
         bobber_rigidbody = bobber.GetComponentInParent(typeof(Rigidbody2D)) as Rigidbody2D;
         
@@ -55,7 +64,7 @@ public class FishingCast : MonoBehaviour
         just_clicked = true;
     }
 
-    void reel() {
+    public void reel() {
         Bobber bobber_component = bobber.GetComponent<Bobber>();
         if (bobber == null) {
             return;
