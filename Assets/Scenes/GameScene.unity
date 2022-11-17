@@ -174,7 +174,9 @@ MonoBehaviour:
   fishing_rod_end: {fileID: 1629944526}
   bobber_prefab: {fileID: 5761492646758235335, guid: c30b633bab3814145a0b901fdb16758e, type: 3}
   mid_point: {fileID: 1783763837}
+  player: {fileID: 1841170067}
   cast_distance: 2
+  is_cast: 0
 --- !u!212 &95010894
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1323,6 +1325,9 @@ MonoBehaviour:
   movement_speed: 2
   move_range_left: 9
   move_range_right: 4
+  facing_right: 1
+  fishing_rod: {fileID: 95010891}
+  fishing_cast: {fileID: 0}
 --- !u!4 &1841170069
 Transform:
   m_ObjectHideFlags: 0
