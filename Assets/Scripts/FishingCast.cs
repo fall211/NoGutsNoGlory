@@ -10,6 +10,7 @@ public class FishingCast : MonoBehaviour
     private GameObject bobber;    
     private Rigidbody2D bobber_rigidbody;
     private Coroutine lerp;
+    private Coroutine reel_cor;
     private Vector2 mouse_position;
 
     public float cast_distance = 3f;
@@ -56,14 +57,14 @@ public class FishingCast : MonoBehaviour
 
     void reel() {
         Bobber bobber_component = bobber.GetComponent<Bobber>();
-        if (bobber != null) {
-            Destroy(bobber);
+        if (bobber == null) {
+            return;
         }
-        is_cast = false;
-        bobber_component.fish_can_bite = false;
         if (bobber_component.fish_biting) {
             bobber_component.Caught();
         }
+        bobber_component.fish_can_bite = false;
+        reel_cor = StartCoroutine(reel_bobber(bobber));
     }
 
     void apply_vel(Rigidbody2D rigidbody) {
@@ -86,17 +87,35 @@ public class FishingCast : MonoBehaviour
         Vector2 end_pos = mouse_position;
         // clamp the end position to a rectangle to the right of the start position.
         end_pos.x = Mathf.Clamp(end_pos.x, start_pos.x, start_pos.x + 4f);
-        end_pos.y = Mathf.Clamp(end_pos.y, start_pos.y - 2f, start_pos.y + 2f);
+        end_pos.y = Mathf.Clamp(end_pos.y, start_pos.y - 2f, start_pos.y);
 
 
         while (time_elapsed < lerp_duration) {
-            
             mid_point.position = Vector2.Lerp(start_pos, end_pos, time_elapsed/lerp_duration);
             time_elapsed += Time.deltaTime;
             yield return null;
         }
-        mid_point.position = mouse_position;
     }
 
+    IEnumerator reel_bobber(GameObject bobber) {
+        float time_elapsed = 0f;
+        float lerp_duration = 0.5f;
+        Vector2 start_pos = bobber.transform.position;
+
+        Vector2 midpoint_start = mid_point.position;
+
+        while (time_elapsed < lerp_duration) {
+            if (bobber == null) {
+                yield break;
+            }
+            bobber.transform.position = Vector2.Lerp(start_pos, fishing_rod_end.position, time_elapsed/lerp_duration);
+            mid_point.position = Vector2.Lerp(midpoint_start, bobber.transform.position, time_elapsed/lerp_duration);
+            time_elapsed += Time.deltaTime;
+            yield return null;
+        }
+            mid_point.position = bobber.transform.position;
+        Destroy(bobber);
+        is_cast = false;
+    }
 
 }
