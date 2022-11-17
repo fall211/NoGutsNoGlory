@@ -77,7 +77,6 @@ public class FishingCast : MonoBehaviour
         if (rigidbody != null) {
             rigidbody.velocity = vel_direction.normalized * cast_distance * dist_to_mouse;
         }
-
     }
 
     IEnumerator lerp_midpoint(Vector2 mouse_position) {
@@ -88,7 +87,6 @@ public class FishingCast : MonoBehaviour
         // clamp the end position to a rectangle to the right of the start position.
         end_pos.x = Mathf.Clamp(end_pos.x, start_pos.x, start_pos.x + 4f);
         end_pos.y = Mathf.Clamp(end_pos.y, start_pos.y - 2f, start_pos.y);
-
 
         while (time_elapsed < lerp_duration) {
             mid_point.position = Vector2.Lerp(start_pos, end_pos, time_elapsed/lerp_duration);
@@ -113,7 +111,7 @@ public class FishingCast : MonoBehaviour
             time_elapsed += Time.deltaTime;
             yield return null;
         }
-            mid_point.position = bobber.transform.position;
+        mid_point.position = bobber.transform.position;
         Destroy(bobber);
         is_cast = false;
     }
