@@ -71,9 +71,12 @@ public class FishingCast : MonoBehaviour
         }
         if (bobber_component.fish_biting) {
             bobber_component.Caught();
+            reel_cor = StartCoroutine(reel_bobber(bobber, bobber_component.fish));
+        }
+        else {
+            reel_cor = StartCoroutine(reel_bobber(bobber));
         }
         bobber_component.fish_can_bite = false;
-        reel_cor = StartCoroutine(reel_bobber(bobber));
     }
 
     void apply_vel(Rigidbody2D rigidbody) {
@@ -104,7 +107,7 @@ public class FishingCast : MonoBehaviour
         }
     }
 
-    IEnumerator reel_bobber(GameObject bobber) {
+    IEnumerator reel_bobber(GameObject bobber, GameObject fish = null) {
         float time_elapsed = 0f;
         float lerp_duration = 0.5f;
         Vector2 start_pos = bobber.transform.position;
@@ -117,11 +120,17 @@ public class FishingCast : MonoBehaviour
             }
             bobber.transform.position = Vector2.Lerp(start_pos, fishing_rod_end.position, time_elapsed/lerp_duration);
             mid_point.position = Vector2.Lerp(midpoint_start, bobber.transform.position, time_elapsed/lerp_duration);
+            if (fish !=null) {
+                fish.transform.position = bobber.transform.position;
+            }
             time_elapsed += Time.deltaTime;
             yield return null;
         }
         mid_point.position = bobber.transform.position;
         Destroy(bobber);
+        if (fish != null) {
+            Destroy(fish);
+        }
         is_cast = false;
     }
 

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - bobber
   - water
+  - player
+  - inventory
   layers:
   - Default
   - TransparentFX

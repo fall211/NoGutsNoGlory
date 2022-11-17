@@ -7,7 +7,9 @@ public class CharacterMovement : MonoBehaviour
     public float move_range_right = 4f;
     public bool facing_right = true;
     public GameObject fishing_rod;
-    public FishingCast fishing_cast;
+
+    
+    private FishingCast fishing_cast;
     private float x_translate;
 
     private void Start() {

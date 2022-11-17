@@ -47,11 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5309a0cd60eb42e6aef89bde79a9760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fish_prefab: {fileID: 3074743781420574352, guid: ff885ea917b0c46b8b9edd5a26fc78e6, type: 3}
   in_water: 0
   fish_can_bite: 0
   fish_biting: 0
-  buoyancy_force: 30
-  fish_force: 0
 --- !u!212 &5761492646758235354
 SpriteRenderer:
   m_ObjectHideFlags: 0
