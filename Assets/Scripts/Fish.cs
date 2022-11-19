@@ -20,12 +20,24 @@ public class Fish : MonoBehaviour
 
         value = (type + 1) * weight;
 
+        switch(type) {
+            case 0:
+                gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                break;
+            case 1:
+                gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                break;
+            case 2:
+                gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+                break;
+        }
+
         inventory_obj = GameObject.FindGameObjectWithTag("inventory");
         inventory_obj.TryGetComponent<PlayerInventory>(out player_inventory);
     }
 
 
     public void on_caught() {
-        player_inventory.money += Mathf.Round(value);
+        player_inventory.fish_inventory[type] += 1;
         }
 }

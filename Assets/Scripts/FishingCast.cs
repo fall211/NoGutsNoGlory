@@ -69,6 +69,7 @@ public class FishingCast : MonoBehaviour
         if (bobber == null) {
             return;
         }
+        bobber_component.fish_can_bite = false;
         if (bobber_component.fish_biting) {
             bobber_component.Caught();
             reel_cor = StartCoroutine(reel_bobber(bobber, bobber_component.fish));
@@ -76,7 +77,6 @@ public class FishingCast : MonoBehaviour
         else {
             reel_cor = StartCoroutine(reel_bobber(bobber));
         }
-        bobber_component.fish_can_bite = false;
     }
 
     void apply_vel(Rigidbody2D rigidbody) {
