@@ -11,24 +11,29 @@ public class Fish : MonoBehaviour
 
     public GameObject inventory_obj;
     public PlayerInventory player_inventory;
-
+    public Sprite heart;
 
     void Awake() {
+
         // TODO: make weight a random value on a normal distribution
         weight = Random.Range(0.5f, 10f);
-        type = Random.Range(0, 3);
+        type = Random.Range(0, 1);
 
         value = (type + 1) * weight;
 
-        switch(type) {
+        // rescale the fish to be proportional to its weight
+        transform.localScale = new Vector2(weight / 10, weight / 10);
+
+
+        switch (type) {
             case 0:
-                gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                gameObject.GetComponent<SpriteRenderer>().sprite = heart;
                 break;
             case 1:
-                gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                gameObject.GetComponent<SpriteRenderer>().sprite = heart;
                 break;
             case 2:
-                gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+                gameObject.GetComponent<SpriteRenderer>().sprite = heart;
                 break;
         }
 
