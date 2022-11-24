@@ -4,10 +4,9 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
 
-    public float money;
+    public float net_worth;
     public int[] fish_inventory;
 
-    private bool inventory_open = false;
     public GameObject heart_text;
     public GameObject guts_text;
     public GameObject lung_text;
@@ -16,7 +15,7 @@ public class PlayerInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        money = 0;
+        net_worth = 0;
         fish_inventory = new int[3];
         canvas_obj.SetActive(false);
     }
@@ -25,14 +24,14 @@ public class PlayerInventory : MonoBehaviour
     void Update()
     {
         // if the player presses tab, open the inventory
-        if (Input.GetKeyDown(KeyCode.Tab) && !inventory_open) {
-            inventory_open = true;
-            show_inventory();
-        }
-        else if (Input.GetKeyDown(KeyCode.Tab) && inventory_open) {
-            inventory_open = false;
-            hide_inventory();
-        }
+        // if (Input.GetKeyDown(KeyCode.Tab) && !inventory_open) {
+        //     inventory_open = true;
+        //     show_inventory();
+        // }
+        // else if (Input.GetKeyDown(KeyCode.Tab) && inventory_open) {
+        //     inventory_open = false;
+        //     hide_inventory();
+        // }
 
         heart_text.GetComponent<TextMeshProUGUI>().text = fish_inventory[0].ToString();
         guts_text.GetComponent<TextMeshProUGUI>().text = fish_inventory[1].ToString();
@@ -40,13 +39,13 @@ public class PlayerInventory : MonoBehaviour
 
     }
 
-    void show_inventory() {
+    public void show_inventory() {
         canvas_obj.SetActive(true);
-        Debug.Log("Money: " + money);
+        Debug.Log("net_worth: " + net_worth);
         Debug.Log("Fish: " + fish_inventory[0] + ", " + fish_inventory[1] + ", " + fish_inventory[2]);
     }
 
-    void hide_inventory() {
+    public void hide_inventory() {
         canvas_obj.SetActive(false);
         Debug.Log("Inventory closed");
     }
