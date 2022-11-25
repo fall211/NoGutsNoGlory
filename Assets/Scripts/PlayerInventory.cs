@@ -13,25 +13,15 @@ public class PlayerInventory : MonoBehaviour
     public GameObject canvas_obj;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         net_worth = 0;
         fish_inventory = new int[3];
         canvas_obj.SetActive(false);
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        // if the player presses tab, open the inventory
-        // if (Input.GetKeyDown(KeyCode.Tab) && !inventory_open) {
-        //     inventory_open = true;
-        //     show_inventory();
-        // }
-        // else if (Input.GetKeyDown(KeyCode.Tab) && inventory_open) {
-        //     inventory_open = false;
-        //     hide_inventory();
-        // }
+    void Update() {
+
 
         heart_text.GetComponent<TextMeshProUGUI>().text = fish_inventory[0].ToString();
         guts_text.GetComponent<TextMeshProUGUI>().text = fish_inventory[1].ToString();
