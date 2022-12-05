@@ -8,11 +8,12 @@ TagManager:
   - water
   - player
   - inventory
+  - fish
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Fish
+  - 
   - Water
   - UI
   - 
@@ -44,6 +45,12 @@ TagManager:
   m_SortingLayers:
   - name: Liquid
     uniqueID: 2047277081
+    locked: 0
+  - name: Bobber
+    uniqueID: 2798754439
+    locked: 0
+  - name: Fish
+    uniqueID: 2238342173
     locked: 0
   - name: World Tiles
     uniqueID: 731197107

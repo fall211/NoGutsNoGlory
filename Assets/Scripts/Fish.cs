@@ -11,6 +11,8 @@ public class Fish : MonoBehaviour
     public GameObject inventory_obj;
     public PlayerInventory player_inventory;
     public Sprite heart;
+    public Sprite guts;
+    public Sprite lungs;
 
     void Awake() {
 
@@ -29,10 +31,10 @@ public class Fish : MonoBehaviour
                 gameObject.GetComponent<SpriteRenderer>().sprite = heart;
                 break;
             case 1:
-                gameObject.GetComponent<SpriteRenderer>().sprite = heart;
+                gameObject.GetComponent<SpriteRenderer>().sprite = guts;
                 break;
             case 2:
-                gameObject.GetComponent<SpriteRenderer>().sprite = heart;
+                gameObject.GetComponent<SpriteRenderer>().sprite = lungs;
                 break;
         }
 
